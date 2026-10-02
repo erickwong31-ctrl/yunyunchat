@@ -4,98 +4,122 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>允允豬助手</title>
-<link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#f8a5b8">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang TC","Microsoft JhengHei",Arial,sans-serif;-webkit-tap-highlight-color:transparent}
-body{background:#fff0f3;display:flex;flex-direction:column;height:100vh;max-width:520px;margin:0 auto}
-.top{background:linear-gradient(135deg,#f78fb3,#f8a5b8);color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,.12)}
-.top .logo{width:44px;height:44px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
-.top .titles{flex:1}
-.top .titles b{display:block;font-size:16px}
-.top .titles span{font-size:11px;opacity:.9}
-.top .clear{font-size:12px;background:rgba(255,255,255,.25);padding:6px 10px;border-radius:8px;cursor:pointer}
-.chat{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:12px}
-.date{text-align:center;font-size:11px;color:#c08;margin:2px 0}
-.msg{display:flex;gap:10px;max-width:84%}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:"PingFang TC","Microsoft JhengHei",sans-serif;background:#f4efe6;display:flex;flex-direction:column;max-width:520px;margin:0 auto}
+.top{background:linear-gradient(135deg,#f78fb3,#f8a5b8);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
+.top .av{width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:26px}
+.top .nm{flex:1}
+.top .nm b{display:block;font-size:17px}
+.top .nm span{font-size:12px;opacity:.9}
+.top .cl{background:rgba(255,255,255,.25);border:none;color:#fff;padding:7px 12px;border-radius:8px;font-size:13px}
+.chat{flex:1;overflow-y:auto;padding:18px 14px;display:flex;flex-direction:column;gap:14px;background:#f4efe6}
+.date{align-self:center;font-size:11px;color:#b9a98c;background:#e9e0d2;padding:3px 12px;border-radius:10px}
+.msg{display:flex;gap:10px;max-width:82%}
 .msg.me{align-self:flex-end;flex-direction:row-reverse}
-.av{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 1px 4px rgba(0,0,0,.1)}
-.av.bot{background:#fff}
-.av.me{background:#f8a5b8}
-.bub{background:#fff;padding:10px 13px;border-radius:14px;position:relative;font-size:15px;line-height:1.6;color:#4b2a33;box-shadow:0 1px 3px rgba(0,0,0,.06);word-break:break-word}
-.msg.me .bub{background:#f8d3de}
-.msg .meta{display:flex;flex-direction:column;align-items:flex-start}
-.msg.me .meta{align-items:flex-end}
-.meta small{font-size:10px;color:#d9a0ad;margin:2px 2px 4px}
-.typing{display:inline-flex;gap:4px;padding:12px 14px;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.typing i{width:7px;height:7px;background:#f8a5b8;border-radius:50%;animation:blink 1.2s infinite}
+.mav{width:38px;height:38px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.mb{background:#fff;padding:11px 14px;border-radius:16px;font-size:15px;color:#3a2f23;line-height:1.6;box-shadow:0 2px 6px rgba(0,0,0,.06);word-break:break-word}
+.msg.me .mb{background:#d8efcf}
+.mb small{display:block;font-size:11px;color:#a9a08f;margin-top:4px;text-align:right}
+.typing{display:inline-flex;gap:4px;padding:12px 14px;background:#fff;border-radius:16px;align-items:center}
+.typing i{width:8px;height:8px;background:#f39;border-radius:50%;animation:blink 1.2s infinite}
 .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
-@keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
-.bottom{background:#fff;border-top:1px solid #fce0e7;padding:10px 10px 14px;display:flex;align-items:flex-end;gap:8px}
-.bottom input{flex:1;height:44px;border:2px solid #ffe3eb;border-radius:22px;padding:0 16px;font-size:15px;background:#fff;outline:none}
-.bottom input:focus{border-color:#f8a5b8}
-.bottom .send{width:54px;height:44px;border:none;border-radius:22px;background:linear-gradient(135deg,#f78fb3,#f8a5b8);color:#fff;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 6px rgba(248,165,184,.4)}
+@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.bottom{background:#fff;padding:10px 12px 14px;display:flex;gap:10px;align-items:center;border-top:1px solid #eee4d6}
+.bottom input{flex:1;border:1px solid #e5d9c8;border-radius:24px;padding:12px 16px;font-size:15px;outline:none;background:#faf7f2}
+.bottom button{width:70px;border:none;border-radius:24px;background:linear-gradient(135deg,#f78fb3,#f8a5b8);color:#fff;font-size:15px;font-weight:700;padding:12px 0}
+.err{background:#fde8e8;color:#b3261e;font-size:12px;padding:8px 12px;border-radius:10px;display:none;margin:0 12px}
 </style>
 </head>
 <body>
-  <div class="top">
-    <div class="logo">🐷</div>
-    <div class="titles"><b>允允豬助手</b><span>線上 · 隨時陪你聊天</span></div>
-    <div class="clear" onclick="clearChat()">清除</div>
-  </div>
 
-  <div class="chat" id="chat">
-    <div class="date">今天</div>
-    <div class="msg"><div class="av bot">🐷</div><div class="meta"><div class="bub">嗨嗨！我係允允豬助手 🐷✨ 有咩想傾、想問，都可以同我講～</div></div></div>
-  </div>
+<div class="top">
+  <div class="av">🐷</div>
+  <div class="nm"><b>允允豬助手</b><span>線上 · 隨時陪你聊天</span></div>
+  <button class="cl" id="clr">清除</button>
+</div>
 
-  <div class="bottom">
-    <input id="inp" placeholder="同允允豬講啲咩…" autocomplete="off">
-    <button class="send" id="send">發送</button>
-  </div>
+<div class="err" id="err"></div>
+
+<div class="chat" id="chat">
+  <div class="date">今天</div>
+  <div class="msg"><div class="mav">🐷</div><div class="mb">嗨嗨！我係允允豬助手～🐷<br>有咩想傾、想問都可以講，我即刻回你！</div></div>
+</div>
+
+<div class="bottom">
+  <input id="inp" placeholder="輸入訊息…">
+  <button id="send">發送</button>
+</div>
 
 <script>
-var chat=document.getElementById('chat'),inp=document.getElementById('inp');
-var history=[];var busy=false;
-try{history=JSON.parse(localStorage.getItem('yunyun_hist')||'[]')}catch(e){history=[]}
-function pad(n){return n<10?'0'+n:n}
-function now(){var d=new Date();return pad(d.getHours())+':'+pad(d.getMinutes())}
-function esc(s){return String(s).replace(/[<>&]/g,function(c){return{'<':'&lt;','>':'&gt;','&':'&amp;'}[c]})}
-function bubble(d){
-  var m=document.createElement('div');m.className='msg'+(d.me?' me':'');
-  m.innerHTML='<div class="av '+(d.me?'me':'bot')+'">'+(d.me?'允':'🐷')+'</div><div class="meta"><small>'+now()+'</small><div class="bub">'+esc(d.t).replace(/\n/g,'<br>')+'</div></div>';
-  chat.appendChild(m);chat.scrollTop=chat.scrollHeight;return m;
-}
-function restore(){
-  chat.innerHTML='<div class="date">今天</div>';
-  history.forEach(function(h){bubble({me:h.role==='user',t:h.content})});
-  chat.scrollTop=chat.scrollHeight;
-}
-restore();
-function showTyping(){
-  var m=document.createElement('div');m.className='msg';m.id='ty';
-  m.innerHTML='<div class="av bot">🐷</div><div class="meta"><div class="typing"><i></i><i></i><i></i></div></div>';
-  chat.appendChild(m);chat.scrollTop=chat.scrollHeight;
-}
-function rmTyping(){var t=document.getElementById('ty');if(t)t.parentNode.removeChild(t)}
-function clearChat(){if(!confirm('確定要清除對話嗎？'))return;history=[];localStorage.removeItem('yunyun_hist');chat.innerHTML='<div class="date">今天</div>'}
-function send(){
-  var t=inp.value.trim();if(!t||busy)return;
-  inp.value='';bubble({me:true,t:t});
-  history.push({role:'user',content:t});save();
-  busy=true;showTyping();
-  fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history})})
-    .then(function(r){return r.json()})
-    .then(function(d){
-      rmTyping();busy=false;
-      if(d.ok&&d.reply){history.push({role:'assistant',content:d.reply});save();bubble({me:false,t:d.reply})}
-      else{bubble({me:false,t:'（抱歉，我暫時冇回應：'+(d.msg||'未知錯誤')+'）'})}
-    })
-    .catch(function(){rmTyping();busy=false;bubble({me:false,t:'（連接失敗，請再試一次）'})});
-}
-function save(){try{localStorage.setItem('yunyun_hist',JSON.stringify(history.slice(-40)))}catch(e){}}
+(function(){
+  var chat=document.getElementById('chat');
+  var inp=document.getElementById('inp');
+  var sendBtn=document.getElementById('send');
+  var errBox=document.getElementById('err');
+  var busy=false;
+  var history=[];
+  function save(){ try{localStorage.setItem('yunyun_hist',JSON.stringify(history))}catch(e){} }
+  function load(){ try{var h=localStorage.getItem('yunyun_hist');if(h)history=JSON.parse(h)||[]}catch(e){history=[]} }
+  function addMsg(text,me){
+    var d=document.createElement('div');d.className='msg'+(me?' me':'');
+    d.innerHTML=(me?'':'<div class="mav">🐷</div>')+'<div class="mb">'+text+(me?'<small>'+new Date().toTimeString().slice(0,5)+'</small>':'')+'</div>';
+    chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
+  }
+  function showErr(m){errBox.textContent=m;errBox.style.display='block'}
+  function hideErr(){errBox.style.display='none'}
+  function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+  // 顯示歷史
+  load();
+  history.forEach(function(h){addMsg(esc(h.content),h.role==='user')});
+
+  function send(){
+    if(busy)return;
+    var t=inp.value.trim();
+    if(!t){return}
+    hideErr();
+    addMsg(esc(t),true);
+    history.push({role:'user',content:t});save();
+    inp.value='';
+    busy=true;
+
+    var ty=document.createElement('div');ty.className='msg';ty.id='ty';
+    ty.innerHTML='<div class="mav">🐷</div><div class="typing"><i></i><i></i><i></i></div>';
+    chat.appendChild(ty);chat.scrollTop=chat.scrollHeight;
+
+    fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history})})
+      .then(function(r){return r.json()})
+      .then(function(d){
+        var tyEl=document.getElementById('ty');if(tyEl){tyEl.parentNode.removeChild(tyEl)}
+        busy=false;
+        if(d&&d.ok&&d.reply){
+          history.push({role:'assistant',content:d.reply});save();
+          addMsg(esc(d.reply),false);
+        }else{
+          showErr('AI 冇回應：'+(d&&d.msg?d.msg:'請確認已充值 DeepSeek 及設定 API key'));
+        }
+      })
+      .catch(function(){
+        var tyEl=document.getElementById('ty');if(tyEl){tyEl.parentNode.removeChild(tyEl)}
+        busy=false;
+        showErr('連接失敗，請檢查網絡後重試');
+      });
+  }
+
+  sendBtn.addEventListener('click',function(e){e.preventDefault();send()});
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();send()}});
+  document.getElementById('clr').addEventListener('click',function(){
+    if(!confirm('確定清除對話紀錄嗎？'))return;
+    history=[];save();
+    chat.innerHTML='<div class="date">今天</div><div class="msg"><div class="mav">🐷</div><div class="mb">嗨嗨！我係允允豬助手～🐷</div></div>';
+  });
+})();
+</script>
+</body>
+</html>
+e){}}
 document.getElementById('send').onclick=send;
 inp.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
 
